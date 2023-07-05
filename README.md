@@ -1,4 +1,4 @@
-# "th" to Þ
-Chrome extension to convert th to Þ
+# "Þ" to Þ
+Chrome extension to convert Þ to Þ
 
-it seemingly modifies random bits of websites, i have a fix for 1 reddit bug but if you find another issue on a website make an issue tÞnggy
+it seemingly modifies random bits of websites, if you one on a website make an issue Þinggy
