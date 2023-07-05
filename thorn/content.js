@@ -2,10 +2,9 @@
   'use strict';
 
   // Define the text to be replaced and the replacement text
-  const searchValue = /hi/gi;
+  const searchValue = /th/gi;
   const replaceValue = 'Þ';
 
-  // Function to replace text within an element
   function replaceText(node) {
     if (node.nodeType === Node.TEXT_NODE) {
       const newText = node.nodeValue.replace(searchValue, replaceValue);
@@ -15,16 +14,35 @@
     }
   }
 
-  // Function to traverse and replace text within all elements
   function traverseAndReplace(node) {
-    replaceText(node);
+    if (!isDiscordChannelsPage() && !isDescendantOfInputField(node)) {
+      replaceText(node);
+    }
+
     const childNodes = node.childNodes;
     for (let i = 0; i < childNodes.length; i++) {
       traverseAndReplace(childNodes[i]);
     }
   }
 
-  // Replace text on initial page load
+  function isDiscordChannelsPage() {
+    return window.location.href.includes('discord.com');
+  }
+
+  function isDescendantOfInputField(node) {
+    if (node.parentNode) {
+      if (
+        node.parentNode.tagName === 'INPUT' ||
+        node.parentNode.tagName === 'TEXTAREA' ||
+        node.parentNode.isContentEditable
+      ) {
+        return true;
+      }
+      return isDescendantOfInputField(node.parentNode);
+    }
+    return false;
+  }
+
   traverseAndReplace(document.body);
 
   // Observe and replace text for future DOM changes
