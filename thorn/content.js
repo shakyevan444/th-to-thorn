@@ -2,9 +2,10 @@
   'use strict';
 
   // Define the text to be replaced and the replacement text
-  const searchValue = /th/gi;
+  const searchValue = /hi/gi;
   const replaceValue = 'Þ';
 
+  // Function to replace text within an element
   function replaceText(node) {
     if (node.nodeType === Node.TEXT_NODE) {
       const newText = node.nodeValue.replace(searchValue, replaceValue);
@@ -14,6 +15,7 @@
     }
   }
 
+  // Function to traverse and replace text within all elements
   function traverseAndReplace(node) {
     replaceText(node);
     const childNodes = node.childNodes;
@@ -22,6 +24,7 @@
     }
   }
 
+  // Replace text on initial page load
   traverseAndReplace(document.body);
 
   // Observe and replace text for future DOM changes
