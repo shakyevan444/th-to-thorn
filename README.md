@@ -1,4 +1,4 @@
-# "Þ" to Þ
-Chrome extension to convert Þ to Þ
+# "th" to Þ
+Chrome extension to convert th to Þ
 
-1.3 is prolly the final ver
+1.3 is prolly Þe final ver
